@@ -58,16 +58,16 @@
       <li>Nyx reads your <strong>heart rate on your watch</strong> to detect sleep. This stays on your devices &mdash; we do not collect or sell it.</li>
       <li>Nyx needs <strong>notification access on your phone</strong> so it can see and pause the media that is currently playing. It does not read the content of your notifications for any other purpose.</li>
       <li>If you choose to connect <strong>Google Home</strong>, Nyx can pause media on your Home devices (TVs, speakers). This uses Google&rsquo;s APIs under your own account.</li>
-      <li>A small <strong>event log</strong> (e.g. &ldquo;paused Netflix at 00:18&rdquo;) is stored on your device, and optionally synced to your private cloud space so a partner you invite can see it. You control this.</li>
-      <li>We use <strong>Firebase</strong> (a Google service) for optional sign-in and that sync.</li>
+      <li>A small <strong>event log</strong> (e.g. &ldquo;paused Netflix at 00:18&rdquo;) is kept <strong>on your phone only</strong>. It is never uploaded, synced, or shared.</li>
+      <li>We use <strong>Firebase</strong> (a Google service) only for optional Google sign-in, used to pause your Google Home devices.</li>
     </ul>
   </div>
 
   <h2>What data Nyx handles</h2>
   <p><strong>Health / body sensors (heart rate, on the watch).</strong> The Wear OS app reads heart-rate samples via Android Health Services to decide when you have likely fallen asleep. These samples are processed on the watch and are <strong>not transmitted off your devices</strong> and <strong>not stored by us</strong>. Only the resulting &ldquo;sleep event&rdquo; signal (a timestamp) is sent to your phone over the local Wearable Data Layer.</p>
   <p><strong>Media session information (on the phone).</strong> To pause what is playing, Nyx uses Android&rsquo;s notification-listener access to read active media sessions. It records the title and playback position of media it pauses (e.g. &ldquo;The Left Hand of Darkness &mdash; paused at 02:11&rdquo;) so it can show you a log. It does not read, store, or transmit the contents of your other notifications.</p>
-  <p><strong>Account information (optional).</strong> If you sign in with Google (to connect Google Home or to sync across your household), we receive a Google account identifier through Firebase Authentication. If you do not sign in, the app uses an anonymous identifier.</p>
-  <p><strong>Pause event log.</strong> A list of pause events (timestamp, app/source, media title, heart-rate at the moment of pause) is stored locally on your device in a database. If you enable household sync, this log is stored in your private Firebase Firestore space and shared only with members you explicitly invite by their user ID.</p>
+  <p><strong>Account information (optional).</strong> If you sign in with Google (to connect Google Home), we receive a Google account identifier through Firebase Authentication. This is the only thing that leaves your device, and only if you choose to sign in. If you do not sign in, the app uses an anonymous identifier and nothing about you is sent anywhere.</p>
+  <p><strong>Pause event log.</strong> A list of pause events (timestamp, app/source, media title) is stored <strong>locally on your device only</strong>. It is never uploaded, synced, or shared. Heart rate is <strong>not</strong> part of this log &mdash; it is read on the watch to detect sleep and immediately discarded, never stored.</p>
 
   <h2>What we do NOT do</h2>
   <ul>
@@ -79,7 +79,7 @@
 
   <h2>Third-party services</h2>
   <ul>
-    <li><strong>Google Firebase</strong> (Authentication + Cloud Firestore) &mdash; optional sign-in and household sync. Governed by Google&rsquo;s privacy policy.</li>
+    <li><strong>Google Firebase</strong> (Authentication only) &mdash; optional Google sign-in, used solely to connect Google Home. Governed by Google&rsquo;s privacy policy.</li>
     <li><strong>Google Home APIs</strong> &mdash; only if you connect Google Home; used to pause media on your own Home devices under your account.</li>
   </ul>
 
@@ -93,14 +93,14 @@
 
   <h2>Your choices</h2>
   <ul>
-    <li>Use Nyx without signing in (anonymous, local only).</li>
-    <li>Disable household sync to keep all event data on-device.</li>
+    <li>Use Nyx without signing in (anonymous; everything stays on your phone).</li>
+    <li>All pause data is on-device by default &mdash; there is no sync to turn off.</li>
     <li>Revoke notification access or sensor permission at any time in Android Settings (the relevant feature stops working, but the app still runs).</li>
     <li>Uninstalling removes the local database from your device.</li>
   </ul>
 
   <h2>Data retention &amp; deletion</h2>
-  <p>Local data is removed when you uninstall the app or clear its data. For synced household data, contact us at the email below to request deletion of your cloud-stored events.</p>
+  <p>All app data is local to your device &mdash; it is removed when you uninstall the app or clear its data. There is no cloud-stored personal data to delete. (Google sign-in, if you used it, can be disconnected in your Google account settings.)</p>
 
   <h2>Children</h2>
   <p>Nyx is not directed at children under 13 and we do not knowingly collect data from them.</p>
