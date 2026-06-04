@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nyx Sleep Pause — fall asleep mid-episode, wake up where you left off</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="nyx-landing.css" />
+</head>
+<body>
+
+<!-- brow-star crescent mark, reused as inline symbol -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="nyxGrad" x1="40" y1="24" x2="160" y2="176" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6E8BFF" /><stop offset="1" stop-color="#B05AFF" />
+    </linearGradient>
+    <mask id="nyxCre"><rect width="200" height="200" fill="#fff" /><circle cx="132" cy="74" r="76" fill="#000" /></mask>
+    <symbol id="nyxMark" viewBox="0 0 200 200">
+      <circle cx="94" cy="100" r="84" fill="url(#nyxGrad)" mask="url(#nyxCre)" />
+      <path transform="translate(140 64) scale(1.4)" fill="#CFE0FF"
+            d="M0 -11 C0.6 -5 2 -1.6 11 0 2 1.6 0.6 5 0 11 -0.6 5 -2 1.6 -11 0 -2 -1.6 -0.6 -5 0 -11Z" />
+    </symbol>
+  </defs>
+</svg>
+
+<div class="skyfield" id="sky"></div>
+
+<div class="shell">
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a class="brand" href="#top"><svg class="mk"><use href="#nyxMark"/></svg><b>NYX<small> SLEEP</small></b></a>
+      <div class="nav-links">
+        <a href="#how">How it works</a>
+        <a href="#devices">Devices</a>
+        <a href="#features">Features</a>
+        <a href="#night">The night</a>
+      </div>
+      <a class="nav-cta" href="#get">Get Nyx</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero" id="top">
+    <div class="hero-orbwrap">
+      <div class="halo"></div>
+      <div class="orb" style="--orb:180px">
+        <div class="orb-glow"></div>
+        <div class="orb-core"></div>
+        <div class="orb-sheen"></div>
+        <div class="orb-rim"></div>
+      </div>
+    </div>
+    <div class="eyebrow mono"><span class="pip"></span>Phone + Wear OS · sleep companion</div>
+    <h1>Fall asleep mid-episode. <span class="grad">Wake up where you left off.</span></h1>
+    <p class="sub">Nyx listens for the slow breath through your watch, then quietly pauses whatever’s playing on your phone. No timers. No guessing. Just the room going still when you do.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#get">Get Nyx
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="btn btn-ghost" href="#how">See how it works</a>
+    </div>
+    <p class="whisper mono">Listening for the slow breath · <b>56 BPM</b> · armed for tonight</p>
+  </header>
+
+  <!-- HOW IT WORKS -->
+  <section class="block container" id="how">
+    <div class="reveal">
+      <div class="kicker"><span class="bar"></span><span>How it works</span></div>
+      <h2>Three quiet moves between two devices.</h2>
+      <p class="lead">No buttons to press as you drift off. The watch feels you go, signals the phone, and the sound fades — a handoff that happens entirely on your wrist and in your pocket.</p>
+    </div>
+    <div class="how">
+      <div class="step reveal">
+        <div class="thread"></div>
+        <div class="n mono">01</div>
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="14" y="6" width="20" height="36" rx="6"/><path d="M14 14h20M14 34h20"/>
+          <path d="M19 24h3l2-4 3 8 2-4h3"/>
+        </svg>
+        <h3>The watch feels you drift</h3>
+        <p>Heart rate slows, breathing lengthens. Your Wear OS watch reads the change through your pulse — often before you’d notice it yourself.</p>
+      </div>
+      <div class="step reveal">
+        <div class="thread"></div>
+        <div class="n mono">02</div>
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="24" r="4"/><circle cx="36" cy="24" r="4"/><path d="M16 24h16"/>
+          <path d="M20 17l-3.5 3.5M20 31l-3.5-3.5M28 17l3.5 3.5M28 31l3.5-3.5" opacity=".5"/>
+        </svg>
+        <h3>It signals the phone</h3>
+        <p>A quiet handoff across your devices — no cloud round-trip, no lag. The watch tells the phone you’ve gone under.</p>
+      </div>
+      <div class="step reveal">
+        <div class="n mono">03</div>
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 24c4 0 4-8 8-8s4 16 8 16 4-12 8-12 4 4 8 4"/>
+          <rect x="20" y="20" width="3.5" height="8" rx="1.75" fill="currentColor" stroke="none"/>
+          <rect x="26" y="20" width="3.5" height="8" rx="1.75" fill="currentColor" stroke="none"/>
+        </svg>
+        <h3>The room falls quiet</h3>
+        <p>Nyx pauses the active media session — audiobook, podcast, film — exactly on the word you stopped hearing. It’s there in the morning, waiting.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEVICES SHOWCASE -->
+  <section class="block container" id="devices">
+    <div class="showcase">
+      <div class="devices reveal">
+        <div class="phone-mini">
+          <div class="pm-screen">
+            <div class="pm-bar">
+              <span class="t mono">23:14</span>
+              <span class="chip mono"><i></i>56 BPM</span>
+            </div>
+            <div class="pm-hero">
+              <div class="orb" style="--orb:120px">
+                <div class="orb-glow"></div><div class="orb-core"></div><div class="orb-sheen"></div><div class="orb-rim"></div>
+              </div>
+              <div>
+                <h4>Armed for tonight.</h4>
+                <p>Listening for the slow breath. Rest when you’re ready.</p>
+              </div>
+              <div class="pm-status mono">HEART 56 · <b>LISTENING</b></div>
+            </div>
+          </div>
+        </div>
+        <div class="watch-mini">
+          <span class="wt mono">NYX</span>
+          <div class="orb" style="--orb:80px">
+            <div class="orb-glow"></div><div class="orb-core"></div><div class="orb-sheen"></div><div class="orb-rim"></div>
+          </div>
+          <span class="ws mono">Listening</span>
+          <span class="wb mono">54 BPM</span>
+          <span class="wf mono">ARMED · ALL NIGHT</span>
+        </div>
+      </div>
+      <div class="showcase-copy reveal">
+        <div class="kicker"><span class="bar"></span><span>Built for two screens</span></div>
+        <h2>One companion, on your wrist and in your hand.</h2>
+        <p class="lead">The watch is the sensor; the phone is the stage. Together they form one calm system that knows the difference between watching and sleeping.</p>
+        <ul class="feat-list">
+          <li>
+            <svg class="fi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v2M12 19v2M5 12H3M21 12h-2M6.3 6.3 4.9 4.9M19.1 19.1l-1.4-1.4M17.7 6.3l1.4-1.4M4.9 19.1l1.4-1.4"/><circle cx="12" cy="12" r="4"/></svg>
+            <div><b>Senses sleep, not screen-off</b><span>Heart-rate and motion together, so a still moment on the couch never triggers a pause.</span></div>
+          </li>
+          <li>
+            <svg class="fi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0Z"/><path d="M12 7v5l3 2"/></svg>
+            <div><b>Resumes to the exact moment</b><span>Nyx bookmarks the media position, down to the second. Pick up at the word you last heard.</span></div>
+          </li>
+          <li>
+            <svg class="fi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="M9 12l2 2 4-4"/></svg>
+            <div><b>Detection stays on your devices</b><span>Your pulse never leaves the watch-and-phone pair. No account required to sleep.</span></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="block container" id="features">
+    <div class="reveal">
+      <div class="kicker"><span class="bar"></span><span>What you get</span></div>
+      <h2>Calm on the surface. Precise underneath.</h2>
+    </div>
+    <div class="features">
+      <div class="feature reveal">
+        <svg class="fico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11v2M8 8v8M12 5v14M16 8v8M20 11v2"/></svg>
+        <h3>Every media session</h3>
+        <p>Audiobooks, podcasts, films, ambient — anything holding the active session, paused the same gentle way.</p>
+      </div>
+      <div class="feature reveal">
+        <svg class="fico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.2A8.4 8.4 0 1 1 11 3.6a6.6 6.6 0 0 0 9.5 10.6Z"/></svg>
+        <h3>Time-of-night aware</h3>
+        <p>Deeper and armed at 11pm; softer and reviewing at 8am. The app reads the room as the hours pass.</p>
+      </div>
+      <div class="feature reveal">
+        <svg class="fico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l4-7 4 4 4-8 4 6"/><circle cx="20" cy="6" r="1.4" fill="currentColor" stroke="none"/></svg>
+        <h3>A morning you can read</h3>
+        <p>Wake to a quiet log of what paused and when — every catch, with the heart rate that triggered it.</p>
+      </div>
+      <div class="feature reveal">
+        <svg class="fico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9Z"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+        <h3>It tells you if it’s blind</h3>
+        <p>Lose the watch and Nyx says so, plainly and calmly — then offers to guard the phone alone until it’s back.</p>
+      </div>
+      <div class="feature reveal">
+        <svg class="fico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        <h3>No setup ritual</h3>
+        <p>Pair once. From then on it arms itself the moment your pulse begins to slow — nothing to toggle at bedtime.</p>
+      </div>
+      <div class="feature reveal">
+        <svg class="fico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 9 9c-5 0-9-4-9-9Z"/></svg>
+        <h3>Dark by design</h3>
+        <p>Built for the one room where bright screens don’t belong. Never a white flash, at any hour.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE NIGHT -->
+  <section class="block container" id="night">
+    <div class="reveal">
+      <div class="kicker"><span class="bar"></span><span>The same app, two moods</span></div>
+      <h2>It knows the difference between bedtime and morning.</h2>
+      <p class="lead">Nyx isn’t a static dashboard. It deepens as you settle and lifts as you wake — in color, in light, and in the way it speaks to you.</p>
+    </div>
+    <div class="timestrip reveal">
+      <div class="timecard night">
+        <div class="clock mono">11:00 <span style="font-size:13px;color:var(--muted)">PM</span></div>
+        <div class="phase mono">Night · armed</div>
+        <div class="say">“Listening for the slow breath.” <span>Stars up, guard set, the room gone intimate.</span></div>
+      </div>
+      <div class="timecard morning">
+        <div class="clock mono">08:00 <span style="font-size:13px;color:var(--muted)">AM</span></div>
+        <div class="phase mono">Morning · reviewing</div>
+        <div class="say">“You drifted off four times.” <span>Softer light, the night gently recounted back to you.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSING CTA -->
+  <section class="closing" id="get">
+    <div class="orb orb-c" style="--orb:128px">
+      <div class="orb-glow"></div><div class="orb-core"></div><div class="orb-sheen"></div><div class="orb-rim"></div>
+    </div>
+    <h2>Let the night do the pausing.</h2>
+    <p>Pair your watch and your phone once. Nyx takes it from there — every night, without a word from you.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#">Get it on Google Play
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="btn btn-ghost" href="#top">Back to top</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="foot-inner">
+        <a class="brand" href="#top"><svg class="mk"><use href="#nyxMark"/></svg><b>NYX<small> SLEEP</small></b></a>
+        <div class="foot-links">
+          <a href="#how">How it works</a>
+          <a href="#features">Features</a>
+          <a href="#night">The night</a>
+          <a href="#get">Get Nyx</a>
+          <a href="privacy.html">Privacy</a>
+        </div>
+      </div>
+      <div class="foot-copy mono">Νύξ — goddess of night, mother of sleep. © 2026 Nyx Sleep Pause. Phone + Wear OS.</div>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  // sparse star field
+  (function () {
+    var sky = document.getElementById('sky');
+    var n = window.innerWidth < 700 ? 40 : 80;
+    var html = '';
+    for (var i = 0; i < n; i++) {
+      var sz = (Math.random() * 1.6 + 0.6).toFixed(2);
+      html += '<span class="s" style="left:' + (Math.random()*100).toFixed(2) + '%;top:' + (Math.random()*100).toFixed(2)
+        + '%;width:' + sz + 'px;height:' + sz + 'px;--tw:' + (Math.random()*4+3).toFixed(1) + 's;animation-delay:' + (Math.random()*5).toFixed(1) + 's"></span>';
+    }
+    sky.innerHTML = html;
+  })();
+
+  // scroll reveal
+  (function () {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(function (el, i) {
+      el.style.transitionDelay = ((i % 3) * 0.08) + 's';
+      io.observe(el);
+    });
+  })();
+</script>
+</body>
+</html>
